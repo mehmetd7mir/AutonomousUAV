@@ -6,4 +6,12 @@
   
 */
 
-/* Language Screen */
+// SupportedLanguages
+"language.en" = "English";
+"language.tr" = "Turkish";
+"language.de" = "German";
+"language.es" = "Spanish";
+"language.fr" = "French";
+"language.it" = "Italian";
+"language.ja" = "Japanese";
+"language.ar" = "Arabic";

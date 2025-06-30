@@ -5,3 +5,15 @@
   Created by Mehmet  Demir on 23.06.2025.
   
 */
+
+// SupportedLanguages
+
+"language.en" = "الإنجليزية";
+"language.tr" = "التركية";
+"language.de" = "الألمانية";
+"language.es" = "الإسبانية";
+"language.fr" = "الفرنسية";
+"language.it" = "الإيطالية";
+"language.ja" = "اليابانية";
+"language.ar" = "العربية";
+
