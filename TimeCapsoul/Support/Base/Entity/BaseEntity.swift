@@ -7,3 +7,4 @@
 
 import Foundation
 
+public protocol BaseEntity : Codable {}

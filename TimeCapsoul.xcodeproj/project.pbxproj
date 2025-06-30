@@ -42,7 +42,7 @@
 		59582F242E0B0A51006F0AB2 /* Exceptions for "TimeCapsoul" folder in "TimeCapsoulUITests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Support/UIIdentifiers.swift,
+				Support/Base/Others/UIIdentifiers.swift,
 			);
 			target = 59B82C832E092960009BCD00 /* TimeCapsoulUITests */;
 		};
