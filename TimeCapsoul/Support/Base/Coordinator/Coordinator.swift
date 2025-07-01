@@ -8,15 +8,15 @@
 import Foundation
 import UIKit
 
-public protocol Coordinator : AnyObject {
+protocol Coordinator : AnyObject {
     
     var navigationController : UINavigationController { get }
     
-    var parentCoordinator : Coordinator? {get set}
+    /** weak * */  var parentCoordinator : Coordinator? { get set } // must be weak by implemented class
     
-    var childCoordinators : [Coordinator] {get set}
+    var childCoordinators: [Coordinator] { get }
     
-    func start()
+    func start() // Every coordinator start own flow,which screen to show first and how the flow begins.
     
     func add(_ coordinator : Coordinator)
     
@@ -24,8 +24,21 @@ public protocol Coordinator : AnyObject {
     
 }
 
-/* Learning
-    We use AnyObject for using this protocol in own. so reference type
+/* Learning  
     
- 
+    Value Type : struct, enum  ( i can say pass by value )
+    Reference type : class , actor ( All operations are performed on/with the original object )
+    
+    
+    *** What is WEAK/STRONG REFERENCE ? ***
+    init() = bismillah / the beginnig of life
+    deinit() = can bedenden cıkma / the end of life
+    Strong R. : This is hold/keep the two objects each other and as long as one of them holds the other , the object CANNOT be deallocated.
+    Weak R. : İf one of them will be nil the other continue own way, no problem
+    - Use strong if ownership is required.
+    - Use weak if it's just a reference, not ownership.
+    
+    obj.deinit() -- totaly stupidity
+    
+    
 */

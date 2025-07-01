@@ -7,4 +7,5 @@
 
 import Foundation
 
+//marker protocol
 public protocol BaseEntity : Codable {}

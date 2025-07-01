@@ -11,8 +11,8 @@ class BaseCoordinator : Coordinator {
     
     // MARK: - Properties
     var navigationController: UINavigationController
-    weak var parentCoordinator: Coordinator?
-    var childCoordinators: [Coordinator] = []
+    weak var parentCoordinator: Coordinator? // must be weak avoid the memory leak/retain cycle
+    private( set )  var childCoordinators: [Coordinator] = []
     
     // MARK: - Init
     init(navigationController: UINavigationController) {
@@ -32,11 +32,33 @@ class BaseCoordinator : Coordinator {
     }
     
     func remove(_ coordinator: any Coordinator) {
-        childCoordinators = childCoordinators.filter{$0 !== coordinator}
+        if let index = childCoordinators.firstIndex(where: { $0 === coordinator }) {
+                childCoordinators.remove(at: index)
+            }
     }
     
     // MARK: - Debug
     deinit {
         print("\(String(describing: self)) deallocated")
+        parentCoordinator?.remove(self) // this is essential for memory leak
     }
 }
+
+
+/* Learning
+
+ any Coordinator means using the protocol itself as a type.
+ It allows holding different Coordinator conforming classes (e.g., OnboardingCoordinator, HomeCoordinator).
+ Swift requires "any" keyword to "explicitly indicate" existential types since Swift 5.7+.
+ Without "any" Swift cannot infer the exact type and throws a compile-time error.
+ "any" means "any instance that conforms to Coordinator, regardless of its concrete type".
+        
+ String(describing : self) is name of class without describing : self is memory adress
+ String(describing : self) likely self.name
+ describing belogs to String
+ 
+ uing firstIndex + remove(at:) instead of filter
+ Mmore efficient because it stops at first match
+ filter checks all items and creates new array (less efficient)
+ 
+*/

@@ -17,6 +17,10 @@ public final class DefaultErrorHandler: BaseErrorHandler {
 
     public func handle(_ error: Error, on view: BaseView?) {
         view?.showError(error.localizedDescription)
-        // İster alert göster, ister logla, ister toast yap.
+        
     }
 }
+
+// ErrorHandler communicates with BaseView instead of UIViewController.
+// This allows platform-agnostic, testable, and decoupled error handling.
+// ErrorHandler doesn't care how the error is presented; it only ensures the view is capable of showing it.
