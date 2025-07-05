@@ -35,6 +35,24 @@ extension String {
         
     }
     
+    func localized(for language : SupportedLanguage? = nil ) -> String {
+        let bundle : Bundle
+        
+        if let language = language {
+            if let path = Bundle.main.path(forResource: language.isoCode, ofType: "lproj"),
+               let spesificBundle = Bundle(path: path) {
+                bundle = spesificBundle
+            } else {
+                bundle = .main
+            }
+        } else {
+            bundle = LanguageManager.shared.activeBundle
+        }
+        
+        return NSLocalizedString(self, bundle: bundle , comment: "")
+        
+    }
+    
 }
 
 
