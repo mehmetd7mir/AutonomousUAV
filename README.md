@@ -8,6 +8,9 @@
 
 > Implements A*, RRT, and RRT* algorithms for autonomous UAV path planning with obstacle avoidance.
 
+> [!NOTE]
+> 🤖 This project was **vibe coded** — built with AI assistance as a learning exercise to explore path planning algorithms.
+
 ---
 
 ## Features
